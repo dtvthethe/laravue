@@ -50,9 +50,13 @@ class UrlController extends Controller
      * @param  \App\Models\Url  $url
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Url $url)
+    public function update(UrlCreateRequest $request, Url $url)
     {
-        //
+        $url->update([
+            'original_url' => $request->original_url,
+        ]);
+
+        return new UrlResource($url);
     }
 
     /**
