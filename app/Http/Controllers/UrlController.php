@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Url;
 use Illuminate\Http\Request;
+use App\Http\Resources\UrlResource;
 use App\Http\Requests\UrlCreateRequest;
 
 class UrlController extends Controller
@@ -26,9 +27,9 @@ class UrlController extends Controller
      */
     public function store(UrlCreateRequest $request)
     {
-        Url::create($request->all());
-        
-        return $request->all();
+        $result = Url::create($request->all());
+
+        return new UrlResource($result);
     }
 
     /**
@@ -39,7 +40,7 @@ class UrlController extends Controller
      */
     public function show(Url $url)
     {
-        //
+        return new UrlResource($url);
     }
 
     /**
