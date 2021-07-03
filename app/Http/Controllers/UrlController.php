@@ -67,6 +67,8 @@ class UrlController extends Controller
      */
     public function destroy(Url $url)
     {
-        //
+        $url->delete();
+
+        return new UrlResource($url);
     }
 }
