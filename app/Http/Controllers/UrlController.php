@@ -6,6 +6,7 @@ use App\Models\Url;
 use Illuminate\Http\Request;
 use App\Http\Resources\UrlResource;
 use App\Http\Requests\UrlCreateRequest;
+use App\Http\Resources\UrlCollection;
 
 class UrlController extends Controller
 {
@@ -16,7 +17,7 @@ class UrlController extends Controller
      */
     public function index()
     {
-        //
+        return new UrlCollection(Url::all());
     }
 
     /**
